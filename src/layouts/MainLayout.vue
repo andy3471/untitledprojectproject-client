@@ -1,6 +1,6 @@
 <template>
   <q-layout view="hHh LpR fFf">
-    <q-header bordered class="bg-white text-grey-8 q-py-xs" height-hint="58">
+    <q-header bordered>
       <q-toolbar>
         <q-btn
           flat
@@ -14,7 +14,7 @@
         <q-toolbar-title>Untitled Project Project</q-toolbar-title>
 
         <div class="q-gutter-sm row items-center no-wrap">
-          <q-btn round dense flat color="grey-8" icon="notifications">
+          <q-btn round dense flat color="white" icon="notifications">
             <q-badge color="red" text-color="white" floating>2</q-badge>
             <q-tooltip>Notifications</q-tooltip>
           </q-btn>
