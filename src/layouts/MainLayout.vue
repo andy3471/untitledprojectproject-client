@@ -1,6 +1,6 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="hHh LpR fFf">
+    <q-header bordered class="bg-white text-grey-8 q-py-xs" height-hint="58">
       <q-toolbar>
         <q-btn
           flat
@@ -11,27 +11,27 @@
           aria-label="Menu"
         />
 
-        <q-toolbar-title>
-          Untitled Project Project
-        </q-toolbar-title>
+        <q-toolbar-title>Untitled Project Project</q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div class="q-gutter-sm row items-center no-wrap">
+          <q-btn round dense flat color="grey-8" icon="notifications">
+            <q-badge color="red" text-color="white" floating>2</q-badge>
+            <q-tooltip>Notifications</q-tooltip>
+          </q-btn>
+          <q-btn round flat>
+            <q-avatar size="26px">
+              <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+            </q-avatar>
+            <q-tooltip>Account</q-tooltip>
+          </q-btn>
+        </div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-1"
-    >
+    <q-drawer v-model="leftDrawerOpen" show-if-above bordered content-class="bg-grey-1">
       <q-list>
         <q-item-label header class="text-grey-8">Essential Links</q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
+        <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
       </q-list>
     </q-drawer>
 
