@@ -7,6 +7,7 @@ module.exports = function (ctx) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
     boot: [
+      'i18n',
       'axios'
     ],
 
@@ -101,7 +102,7 @@ module.exports = function (ctx) {
       manifest: {
         name: 'UPP',
         short_name: 'UPP',
-        description: 'Client for UntitledProjectProject',
+        description: 'A Quasar Framework app',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

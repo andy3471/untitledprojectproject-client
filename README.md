@@ -1,6 +1,6 @@
 # UPP (untitledprojectproject-client)
 
-Client for UntitledProjectProject
+A Quasar Framework app
 
 ## Install the dependencies
 ```bash
