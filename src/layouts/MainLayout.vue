@@ -11,7 +11,15 @@
           aria-label="Menu"
         />
 
-        <q-toolbar-title>Untitled Project Project</q-toolbar-title>
+        <q-toolbar-title v-if="$q.screen.gt.sm" class="row items-center no-wrap">UPP</q-toolbar-title>
+
+        <q-space />
+        <q-input dark dense standout v-model="text" class="q-ml-md search">
+          <template v-slot:append>
+            <q-icon name="search" />
+          </template>
+        </q-input>
+        <q-space />
 
         <div class="q-gutter-sm row items-center no-wrap">
           <q-btn round dense flat color="white" icon="notifications">
@@ -19,7 +27,7 @@
             <q-tooltip>Notifications</q-tooltip>
           </q-btn>
           <q-btn round flat>
-            <q-avatar size="26px">
+            <q-avatar rounded size="26px">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
             </q-avatar>
             <q-tooltip>Account</q-tooltip>
