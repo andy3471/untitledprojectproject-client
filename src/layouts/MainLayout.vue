@@ -26,11 +26,61 @@
             <q-badge color="red" text-color="white" floating>2</q-badge>
             <q-tooltip>Notifications</q-tooltip>
           </q-btn>
-          <q-btn round flat>
+
+          <q-btn dense flat>
+            <div class="row items-center no-wrap">
+              <q-icon name="add" size="20px" />
+              <q-icon name="arrow_drop_down" size="16px" style="margin-left: -2px" />
+            </div>
+            <q-menu auto-close>
+              <q-list dense style="min-width: 100px">
+                <q-item clickable class="GL__menu-link">
+                  <q-item-section>New Project</q-item-section>
+                </q-item>
+                <q-item clickable class="GL__menu-link">
+                  <q-item-section>New Team</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </q-btn>
+
+          <q-btn dense flat no-wrap>
             <q-avatar rounded size="26px">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
             </q-avatar>
+            <q-icon name="arrow_drop_down" size="16px" />
             <q-tooltip>Account</q-tooltip>
+            <q-menu auto-close>
+              <q-list dense>
+                <q-item class="GL__menu-link-signed-in">
+                  <q-item-section>
+                    <div>
+                      <strong>Steve</strong>
+                    </div>
+                  </q-item-section>
+                </q-item>
+                <q-separator />
+                <q-item clickable class="GL__menu-link">
+                  <q-item-section>Your profile</q-item-section>
+                </q-item>
+                <q-item clickable class="GL__menu-link">
+                  <q-item-section>Your projects</q-item-section>
+                </q-item>
+                <q-item clickable class="GL__menu-link">
+                  <q-item-section>Your Groups</q-item-section>
+                </q-item>
+                <q-separator />
+                <q-item clickable class="GL__menu-link">
+                  <q-item-section>Help</q-item-section>
+                </q-item>
+                <q-item clickable class="GL__menu-link">
+                  <q-item-section>Settings</q-item-section>
+                </q-item>
+                <q-item clickable class="GL__menu-link">
+                  <q-item-section>Sign out</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
           </q-btn>
         </div>
       </q-toolbar>
