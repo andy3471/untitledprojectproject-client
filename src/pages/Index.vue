@@ -4,6 +4,11 @@
 
 <script>
 export default {
-  name: "PageIndex"
+  name: "PageIndex",
+  data() {
+    return {
+      api: process.env["API_URL"]
+    };
+  }
 };
 </script>

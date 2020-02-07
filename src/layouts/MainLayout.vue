@@ -11,7 +11,9 @@
           aria-label="Menu"
         />
 
-        <q-toolbar-title v-if="$q.screen.gt.sm" class="row items-center no-wrap">UPP</q-toolbar-title>
+        <q-toolbar-title v-if="$q.screen.gt.sm" class="row items-center no-wrap"
+          >UPP</q-toolbar-title
+        >
 
         <q-space />
         <q-input dark dense standout v-model="text" class="q-ml-md search">
@@ -30,7 +32,11 @@
           <q-btn dense flat>
             <div class="row items-center no-wrap">
               <q-icon name="add" size="20px" />
-              <q-icon name="arrow_drop_down" size="16px" style="margin-left: -2px" />
+              <q-icon
+                name="arrow_drop_down"
+                size="16px"
+                style="margin-left: -2px"
+              />
             </div>
             <q-menu auto-close>
               <q-list dense style="min-width: 100px">
@@ -86,10 +92,19 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered content-class="bg-grey-1">
+    <q-drawer
+      v-model="leftDrawerOpen"
+      show-if-above
+      bordered
+      content-class="bg-grey-1"
+    >
       <q-list>
         <q-item-label header class="text-grey-8">Essential Links</q-item-label>
-        <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
+        <EssentialLink
+          v-for="link in essentialLinks"
+          :key="link.title"
+          v-bind="link"
+        />
       </q-list>
     </q-drawer>
 
@@ -108,7 +123,6 @@ export default {
   components: {
     EssentialLink
   },
-
   data() {
     return {
       leftDrawerOpen: false,
