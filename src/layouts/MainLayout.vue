@@ -16,7 +16,13 @@
         >
 
         <q-space />
-        <q-input dark dense standout v-model="text" class="q-ml-md search">
+        <q-input
+          dark
+          dense
+          standout
+          v-model="searchText"
+          class="q-ml-md search"
+        >
           <template v-slot:append>
             <q-icon name="search" />
           </template>
@@ -126,6 +132,7 @@ export default {
   data() {
     return {
       leftDrawerOpen: false,
+      searchText: "",
       essentialLinks: [
         {
           title: "Docs",

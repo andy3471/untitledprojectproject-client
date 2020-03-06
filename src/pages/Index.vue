@@ -5,24 +5,9 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
-
 export default {
-  name: "PageIndex",
-  data() {
-    return {
-      user: null
-    };
-  },
-  apollo: {
-    user: gql`
-      {
-        user(id: 2) {
-          name
-          email
-        }
-      }
-    `
+  mounted() {
+    console.log(process.env.TEST);
   }
 };
 </script>
