@@ -39,7 +39,7 @@ export default {
           }).then(response2 => {
             console.log(response2)
           }).catch(error => {
-            console.log(err.roresponse.data)
+            console.log(error.response.data)
             const key = Object.keys(error.response.data.errors)[0]
             this.errorMessage = error.response.data.errors[key][0]
           })
