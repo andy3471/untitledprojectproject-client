@@ -6,8 +6,6 @@
 
 <script>
 export default {
-  mounted() {
-    console.log(process.env.TEST);
-  }
+  mounted() {}
 };
 </script>

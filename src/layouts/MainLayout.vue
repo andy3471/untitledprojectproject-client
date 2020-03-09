@@ -56,7 +56,7 @@
             </q-menu>
           </q-btn>
 
-          <q-btn dense flat no-wrap>
+          <q-btn v-if="this.user" dense flat no-wrap>
             <q-avatar rounded size="26px">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
             </q-avatar>
@@ -67,7 +67,7 @@
                 <q-item class="GL__menu-link-signed-in">
                   <q-item-section>
                     <div>
-                      <strong>Steve</strong>
+                      <strong>{{ user.name }}</strong>
                     </div>
                   </q-item-section>
                 </q-item>
@@ -105,12 +105,8 @@
       content-class="bg-grey-1"
     >
       <q-list>
-        <q-item-label header class="text-grey-8">Essential Links</q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
+        <q-item-label header class="text-grey-8">Projects</q-item-label>
+        <ProjectLink v-for="link in projects" :key="link.title" v-bind="link" />
       </q-list>
     </q-drawer>
 
@@ -121,54 +117,41 @@
 </template>
 
 <script>
-import EssentialLink from "components/EssentialLink";
+import ProjectLink from "components/ProjectLink";
+import ElectronBar from "components/ElectronBar";
+import { mapState, mapGetters } from "vuex";
 
 export default {
   name: "MainLayout",
-
   components: {
-    EssentialLink
+    ProjectLink,
+    ElectronBar
+  },
+  computed: {
+    ...mapState({
+      user: state => state.auth.user
+    }),
+    ...mapGetters("auth", ["loggedIn"])
   },
   data() {
     return {
       leftDrawerOpen: false,
       searchText: "",
-      essentialLinks: [
+      projects: [
         {
-          title: "Docs",
+          title: "UPP",
           caption: "quasar.dev",
-          icon: "school",
-          link: "https://quasar.dev"
+          icon: "school"
         },
         {
-          title: "Github",
+          title: "Rota",
           caption: "github.com/quasarframework",
-          icon: "code",
-          link: "https://github.com/quasarframework"
+          icon: "code"
         },
         {
-          title: "Discord Chat Channel",
+          title: "Keyshare",
           caption: "chat.quasar.dev",
-          icon: "chat",
-          link: "https://chat.quasar.dev"
-        },
-        {
-          title: "Forum",
-          caption: "forum.quasar.dev",
-          icon: "record_voice_over",
-          link: "https://forum.quasar.dev"
-        },
-        {
-          title: "Twitter",
-          caption: "@quasarframework",
-          icon: "rss_feed",
-          link: "https://twitter.quasar.dev"
-        },
-        {
-          title: "Facebook",
-          caption: "@QuasarFramework",
-          icon: "public",
-          link: "https://facebook.quasar.dev"
+          icon: "chat"
         }
       ]
     };
