@@ -1,10 +1,7 @@
 <template>
   <q-bar class="q-electron-drag">
-    <q-icon name="laptop_chromebook" />
-    <div>Google Chrome</div>
-
+    <div>UntitledProjectProject</div>
     <q-space />
-
     <q-btn dense flat icon="minimize" @click="minimize" />
     <q-btn dense flat icon="crop_square" @click="maximize" />
     <q-btn dense flat icon="close" @click="closeApp" />

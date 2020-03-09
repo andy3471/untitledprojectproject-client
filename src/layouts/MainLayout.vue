@@ -1,6 +1,7 @@
 <template>
   <q-layout view="hHh LpR fFf">
     <q-header bordered>
+      <ElectronBar v-if="this.mode === 'electron'" />
       <q-toolbar>
         <q-btn
           flat
@@ -113,6 +114,7 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+    
   </q-layout>
 </template>
 
@@ -136,6 +138,7 @@ export default {
   data() {
     return {
       leftDrawerOpen: false,
+      mode: process.env.MODE,
       searchText: "",
       projects: [
         {
