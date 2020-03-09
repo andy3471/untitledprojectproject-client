@@ -90,7 +90,7 @@
                   <q-item-section>Settings</q-item-section>
                 </q-item>
                 <q-item clickable class="GL__menu-link">
-                  <q-item-section>Sign out</q-item-section>
+                  <q-item-section @click="logout">Sign out</q-item-section>
                 </q-item>
               </q-list>
             </q-menu>
@@ -112,6 +112,7 @@
     </q-drawer>
 
     <q-page-container>
+      {{ this.user }}
       <router-view />
     </q-page-container>
     
@@ -121,7 +122,12 @@
 <script>
 import ProjectLink from "components/ProjectLink";
 import ElectronBar from "components/ElectronBar";
+import axios from "axios";
+
 import { mapState, mapGetters } from "vuex";
+
+axios.defaults.withCredentials = true
+axios.defaults.baseURL = 'http://upp.local'
 
 export default {
   name: "MainLayout",
@@ -135,11 +141,26 @@ export default {
     }),
     ...mapGetters("auth", ["loggedIn"])
   },
+  mounted() {
+    axios
+      .get("/api/user")
+      .then(response => [
+        (this.user = response.data),
+      ]);
+  },
+  methods: {
+    logout() {
+      axios.post('logout').then(response => {
+        this.$router.push('/login')
+      })
+    }
+  },
   data() {
     return {
       leftDrawerOpen: false,
       mode: process.env.MODE,
       searchText: "",
+      user: {},
       projects: [
         {
           title: "UPP",

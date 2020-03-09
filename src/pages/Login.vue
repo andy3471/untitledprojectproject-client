@@ -6,7 +6,7 @@
       <q-input outlined v-model="password" type="password" label="Password" />
       <div>
         <q-btn label="Register" color="primary" flat class="q-ml-sm" @click="register"></q-btn>
-        <q-btn label="Sign In" type="submit" color="primary" @click="login"></q-btn>
+        <q-btn label="Sign In" type="submit" color="primary" @click.prevent="login"></q-btn>
       </div>
     </q-form>
   </q-page>
@@ -30,21 +30,30 @@ export default {
   },
   methods: {
     login() {
-     // if (this.mode === "SPA") {
+     if (this.mode === "spa") {
         axios.get('/airlock/csrf-cookie').then(response => {
           console.log(response)
           axios.post('/login', {
             email: this.email,
             password: this.password
           }).then(response2 => {
-            console.log(response2)
+            this.$router.push('/');
           }).catch(error => {
-            console.log(error.response.data)
             const key = Object.keys(error.response.data.errors)[0]
             this.errorMessage = error.response.data.errors[key][0]
           })
         });
-   //   }
+      } else {
+        axios.get('/api/login', {
+          email: this.email,
+          password: this.password
+        }).then(response => {
+          console.log(response)
+        }).catch(error => {
+            const key = Object.keys(error.response.data.errors)[0]
+            this.errorMessage = error.response.data.errors[key][0]
+        })
+      }
     },
     register() {
       this.$router.push('register');
