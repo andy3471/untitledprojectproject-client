@@ -1,9 +1,15 @@
 <template>
-  <q-page class="flex flex-center"></q-page>
+  <q-page padding class="flex">{{ this.user }}</q-page>
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from "vuex";
+
 export default {
-  mounted() {}
+  computed: {
+    ...mapState({
+      user: state => state.auth.user
+    })
+  }
 };
 </script>

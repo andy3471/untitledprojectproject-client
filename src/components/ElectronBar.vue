@@ -1,5 +1,6 @@
 <template>
   <q-bar class="q-electron-drag">
+    <q-icon name="img:/statics/app-logo-128x128.png" />
     <div>UntitledProjectProject</div>
     <q-space />
     <q-btn dense flat icon="minimize" @click="minimize" />

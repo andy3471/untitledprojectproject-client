@@ -95,7 +95,6 @@
     </q-drawer>
 
     <q-page-container>
-      {{ this.user }}
       <router-view />
     </q-page-container>
   </q-layout>

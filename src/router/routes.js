@@ -1,4 +1,4 @@
-import store from 'src/store'
+import store from "../store";
 
 const routes = [{
         path: "/",
@@ -10,8 +10,11 @@ const routes = [{
                 import ("pages/Index.vue")
         }],
         beforeEnter(to, from, next) {
-            console.log(store.getters)
-            next()
+            if (store.state.auth.loggedIn) {
+                next();
+            } else {
+                next("/login");
+            }
         }
     },
     {
