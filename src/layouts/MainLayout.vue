@@ -12,18 +12,10 @@
           aria-label="Menu"
         />
 
-        <q-toolbar-title v-if="$q.screen.gt.sm" class="row items-center no-wrap"
-          >UPP</q-toolbar-title
-        >
+        <q-toolbar-title v-if="$q.screen.gt.sm" class="row items-center no-wrap">UPP</q-toolbar-title>
 
         <q-space />
-        <q-input
-          dark
-          dense
-          standout
-          v-model="searchText"
-          class="q-ml-md search"
-        >
+        <q-input dark dense standout v-model="searchText" class="q-ml-md search">
           <template v-slot:append>
             <q-icon name="search" />
           </template>
@@ -39,11 +31,7 @@
           <q-btn dense flat>
             <div class="row items-center no-wrap">
               <q-icon name="add" size="20px" />
-              <q-icon
-                name="arrow_drop_down"
-                size="16px"
-                style="margin-left: -2px"
-              />
+              <q-icon name="arrow_drop_down" size="16px" style="margin-left: -2px" />
             </div>
             <q-menu auto-close>
               <q-list dense style="min-width: 100px">
@@ -99,12 +87,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-1"
-    >
+    <q-drawer v-model="leftDrawerOpen" show-if-above bordered content-class="bg-grey-1">
       <q-list>
         <q-item-label header class="text-grey-8">Projects</q-item-label>
         <ProjectLink v-for="link in projects" :key="link.title" v-bind="link" />
@@ -115,19 +98,14 @@
       {{ this.user }}
       <router-view />
     </q-page-container>
-    
   </q-layout>
 </template>
 
 <script>
 import ProjectLink from "components/ProjectLink";
 import ElectronBar from "components/ElectronBar";
-import axios from "axios";
 
-import { mapState, mapGetters } from "vuex";
-
-axios.defaults.withCredentials = true
-axios.defaults.baseURL = 'http://upp.local'
+import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
   name: "MainLayout",
@@ -138,29 +116,16 @@ export default {
   computed: {
     ...mapState({
       user: state => state.auth.user
-    }),
-    ...mapGetters("auth", ["loggedIn"])
-  },
-  mounted() {
-    axios
-      .get("/api/user")
-      .then(response => [
-        (this.user = response.data),
-      ]);
+    })
   },
   methods: {
-    logout() {
-      axios.post('logout').then(response => {
-        this.$router.push('/login')
-      })
-    }
+    ...mapActions("auth", ["logout"])
   },
   data() {
     return {
       leftDrawerOpen: false,
       mode: process.env.MODE,
       searchText: "",
-      user: {},
       projects: [
         {
           title: "UPP",

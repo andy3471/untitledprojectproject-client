@@ -1,7 +1,7 @@
 <template>
   <q-page padding class="flex flex-center">
     <q-form class="q-gutter-md">
-      <p v-if="errorMessage"> {{ errorMessage }} </p>
+      <p v-if="errorMessage">{{ errorMessage }}</p>
       <q-input outlined v-model="email" label="Email" />
       <q-input outlined v-model="password" type="password" label="Password" />
       <q-input outlined v-model="password" type="password" label="Confirm Password" />
@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import axios from "axios"
+import axios from "axios";
 
-axios.defaults.withCredentials = true
-axios.defaults.baseURL = 'http://upp.local'
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = process.env.BASE_URL;
 
 export default {
   name: "PageLogin",
@@ -32,10 +32,9 @@ export default {
   },
   methods: {
     login() {
-      this.$router.push('login');
+      this.$router.push("login");
     },
-    register() {
-    }
+    register() {}
   }
 };
 </script>
