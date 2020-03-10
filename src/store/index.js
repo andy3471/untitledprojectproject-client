@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
 import auth from "./auth";
 
@@ -19,6 +20,11 @@ export default function( /* { ssrContext } */ ) {
         modules: {
             auth
         },
+        plugins: [
+            createPersistedState({
+                paths: ["auth"]
+            })
+        ],
 
         // enable strict mode (adds overhead!)
         // for dev mode only
