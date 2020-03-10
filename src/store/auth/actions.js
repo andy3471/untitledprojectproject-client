@@ -14,7 +14,6 @@ export function login(context, details) {
 
 export function loginSpa(context, details) {
     axios.get("/airlock/csrf-cookie").then(response => {
-        console.log(response);
         axios
             .post("/login", {
                 email: details.email,
@@ -60,7 +59,7 @@ export function logout(context) {
 export function logoutSpa(context) {
     axios.post('logout').then(response => {
         this.$router.push('/login')
-        context.dispatch('logout')
+        context.commit('logout')
     })
 }
 

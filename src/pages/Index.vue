@@ -1,7 +1,5 @@
 <template>
-  <q-page class="flex flex-center">
-    <router-link to="/login">Login</router-link>
-  </q-page>
+  <q-page class="flex flex-center"></q-page>
 </template>
 
 <script>

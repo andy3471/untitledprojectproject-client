@@ -1,3 +1,5 @@
+import store from 'src/store'
+
 const routes = [{
         path: "/",
         component: () =>
@@ -6,7 +8,11 @@ const routes = [{
             path: "",
             component: () =>
                 import ("pages/Index.vue")
-        }]
+        }],
+        beforeEnter(to, from, next) {
+            console.log(store.getters)
+            next()
+        }
     },
     {
         path: "/login",
