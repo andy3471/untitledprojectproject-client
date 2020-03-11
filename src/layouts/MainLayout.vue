@@ -35,10 +35,10 @@
             </div>
             <q-menu auto-close>
               <q-list dense style="min-width: 100px">
-                <q-item clickable class="GL__menu-link">
+                <q-item clickable class="GL__menu-link" to="/project/create">
                   <q-item-section>New Project</q-item-section>
                 </q-item>
-                <q-item clickable class="GL__menu-link">
+                <q-item clickable class="GL__menu-link" to="/team/create">
                   <q-item-section>New Team</q-item-section>
                 </q-item>
               </q-list>
@@ -88,10 +88,20 @@
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered content-class="bg-grey-1">
-      <q-list>
-        <q-item-label header class="text-grey-8">Projects</q-item-label>
-        <ProjectLink v-for="link in projects" :key="link.title" v-bind="link" />
-      </q-list>
+      <div class="row">
+        <div class="col-xs-2">
+          <q-list>
+            <ProjectLink v-for="project in projects" :key="project.title" v-bind="project" />
+            <ProjectLink icon="create" title="Create Project" link="/project/create" />
+          </q-list>
+        </div>
+        <div class="col-grow">
+          <q-list>
+            <q-item-label header class="text-grey-8">Untitled Project Proejct</q-item-label>
+            <ChannelLink v-for="channel in channels" :key="channel.title" v-bind="channel" />
+          </q-list>
+        </div>
+      </div>
     </q-drawer>
 
     <q-page-container>
@@ -102,6 +112,7 @@
 
 <script>
 import ProjectLink from "components/ProjectLink";
+import ChannelLink from "components/ChannelLink";
 import ElectronBar from "components/ElectronBar";
 
 import { mapState, mapGetters, mapActions } from "vuex";
@@ -110,7 +121,8 @@ export default {
   name: "MainLayout",
   components: {
     ProjectLink,
-    ElectronBar
+    ElectronBar,
+    ChannelLink
   },
   computed: {
     ...mapState({
@@ -128,18 +140,35 @@ export default {
       projects: [
         {
           title: "UPP",
-          caption: "quasar.dev",
-          icon: "school"
+          icon: "school",
+          link: "/channel"
         },
         {
           title: "Rota",
-          caption: "github.com/quasarframework",
-          icon: "code"
+          icon: "code",
+          link: "/channel"
         },
         {
           title: "Keyshare",
-          caption: "chat.quasar.dev",
-          icon: "chat"
+          icon: "chat",
+          link: "/channel"
+        }
+      ],
+      channels: [
+        {
+          title: "#public",
+          icon: "perm_identity",
+          link: "/channel"
+        },
+        {
+          title: "#frontend",
+          icon: "lock",
+          link: "/channel"
+        },
+        {
+          title: "#backend",
+          icon: "lock",
+          link: "/channel"
         }
       ]
     };

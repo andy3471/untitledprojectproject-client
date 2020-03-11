@@ -1,9 +1,13 @@
 <template>
-  <q-btn round :to="link">
-    <q-avatar :icon="icon" size="28px">
-      <q-tooltip anchor="center right" self="center left" :offset="[0, 0]">{{title}}</q-tooltip>
-    </q-avatar>
-  </q-btn>
+  <q-item clickable tag="a" to="/channel" class="channel">
+    <q-item-section v-if="icon" avatar>
+      <q-icon :name="icon" />
+    </q-item-section>
+
+    <q-item-section>
+      <q-item-label>{{ title }}</q-item-label>
+    </q-item-section>
+  </q-item>
 </template>
 
 <script>
@@ -13,11 +17,6 @@ export default {
     title: {
       type: String,
       required: true
-    },
-
-    caption: {
-      type: String,
-      default: ""
     },
 
     link: {

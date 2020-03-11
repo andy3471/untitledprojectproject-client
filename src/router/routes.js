@@ -18,6 +18,57 @@ const routes = [{
         }
     },
     {
+        path: "/project/create",
+        component: () =>
+            import ("layouts/MainLayout.vue"),
+        children: [{
+            path: "",
+            component: () =>
+                import ("pages/CreateProject.vue")
+        }],
+        beforeEnter(to, from, next) {
+            if (store.state.auth.loggedIn) {
+                next();
+            } else {
+                next("/login");
+            }
+        }
+    },
+    {
+        path: "/team/create",
+        component: () =>
+            import ("layouts/MainLayout.vue"),
+        children: [{
+            path: "",
+            component: () =>
+                import ("pages/CreateTeam.vue")
+        }],
+        beforeEnter(to, from, next) {
+            if (store.state.auth.loggedIn) {
+                next();
+            } else {
+                next("/login");
+            }
+        }
+    },
+    {
+        path: "/channel",
+        component: () =>
+            import ("layouts/MainLayout.vue"),
+        children: [{
+            path: "",
+            component: () =>
+                import ("pages/Channel.vue")
+        }],
+        beforeEnter(to, from, next) {
+            if (store.state.auth.loggedIn) {
+                next();
+            } else {
+                next("/login");
+            }
+        }
+    },
+    {
         path: "/login",
         component: () =>
             import ("layouts/LoggedOut.vue"),
