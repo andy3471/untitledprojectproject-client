@@ -21,9 +21,19 @@
         },
         "spa": {
           "iconHash": "12eb34c69aa422b099a7a6f840ff657a"
+        },
+        "capacitor": {
+          "iconHash": "12eb34c69aa422b099a7a6f840ff657a",
+          "splashscreenHash": false,
+          "splashscreenType": "generate",
+          "backgroundColor": "#000074"
         }
       },
-      "build": {}
+      "build": {
+        "spa": {
+          "iconHash": "12eb34c69aa422b099a7a6f840ff657a"
+        }
+      }
     }
   }
 }

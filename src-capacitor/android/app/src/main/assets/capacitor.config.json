@@ -1,0 +1,10 @@
+{
+  "appId": "org.cordova.quasar.app",
+  "appName": "Untitled Project Project",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "server": {
+    "url": "http://app.upp.local:8080"
+  }
+}
